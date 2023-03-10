@@ -30,7 +30,7 @@ public class OfferKartStepDefination {
         testSetup.driver.switchTo().window(childWindow);
     }
 
-    @Then("User go and search for {string} shortname in offers page to check if product exist same name")
+    @Then("^User go and search for (.+) shortname in offers page to check if product exist same name$")
     public void user_go_and_search_for_the_same_shortname_in_offers_page_to_check_if_product_exist(String shortName) throws InterruptedException {
 
         switchToTheOffersPage();
@@ -40,6 +40,7 @@ public class OfferKartStepDefination {
         offerPageProductName = testSetup.driver.findElement(By.cssSelector("#root > div > div > div > div > div > div > table > tbody > tr > td:nth-child(1)")).getText();
 
         Assert.assertEquals(offerPageProductName, testSetup.landingPageProductName);
+        testSetup.driver.quit();
 
 
     }
